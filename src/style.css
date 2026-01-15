@@ -1,0 +1,19 @@
+/* 引入 Tailwind 的基礎指令 */
+@import "tailwindcss";
+
+/* 你可以在這裡加入全域的自定義樣式 */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #f8fafc; /* 使用 Tailwind 的 slate-50 作為背景 */
+}
+
+#app {
+  width: 100%;
+}
