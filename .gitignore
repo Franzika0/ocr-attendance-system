@@ -42,6 +42,8 @@ RPA/env/
 RPA/.env
 RPA/*.db
 RPA/*.log
+RPA/temp_*.png
+RPA/temp_*.mp3
 
 # --- OS Related ---
 .DS_Store
