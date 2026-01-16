@@ -24,14 +24,13 @@ conda activate myenv
 
 2. 安裝 Python 依賴：
 ```bash
-cd RPA
+cd ocr-attendance-system/RPA
 pip install -r requirements.txt
 
 ```
 
-
 3. 設定環境變數：
-建立一個 `.env` 檔案並填入以下資訊：
+在RPA資料夾下建立一個 `.env` 檔案並填入以下資訊：
 ```env
 OpenAPI_KEY=你的OpenAI金鑰
 GMAIL_SENDER_EMAIL=你的Gmail帳號
@@ -39,55 +38,44 @@ GMAIL_APP_PASSWORD=你的Gmail應用程式密碼
 
 ```
 
-
 4. 啟動後端伺服器：
 ```bash
-uvicorn main:app --reload
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
 ```
 
-5. 
 
 
+### (二). 前端設定
 
-### 2. 前端設定 (Web Interface)
-
-這是你提到的 `npm install` 部分：
-
-1. 進入前端目錄：
+1. 開啟另一個終端進入前端目錄：
 ```bash
-cd frontend
+cd ocr-attendance-system
 
 ```
 
-
-2. **安裝 Node 套件**：
+2. 檢查 Node 版本，建議為22.20.0，接著安裝 Node 套件：
 ```bash
 npm install
 
 ```
 
-
-3. 啟動前端開發伺服器：
+3. 啟動Vite前端開發伺服器：
 ```bash
-npm run dev  # 或是 npm start，視你的框架而定
+npm run dev
 
 ```
 
 
-
----
-
 ## 🖥️ 使用說明
 
-1. 開啟瀏覽器至 `http://localhost:8080`。
-2. 上傳一張包含學號的圖片。
-3. 輸入當前的心情（例如：累爆了）。
-4. 系統將自動回傳辨識結果、AI 語音回覆，並寄送 Email。
+1. 在紅框內掃描學號。
+2. 輸入當前的心情（例如：累爆了）。
+3. 系統將回傳辨識結果、AI 語音回覆，並寄送 Email。
 
 ---
 
 ## ⚠️ 注意事項
 
-* **隱私安全性**：請確保 `.env` 與 `attendance.db` 已加入 `.gitignore`。
-* **OCR 座標**：目前代碼中硬編碼了裁剪座標 `ROI_COORDS = [550, 620, 50, 450]`，請根據實際拍照角度調整。
+* **OCR 座標**：目前程式碼中，設定了固定的裁剪座標 `ROI_COORDS = [550, 620, 50, 450]`，請根據實際拍照角度調整。
+* **裁剪結果**：在 RPA 資料夾下，會輸出當次的掃描結果，方便未來除錯。
